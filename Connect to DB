@@ -1,0 +1,10 @@
+public  string connection()
+        {
+            string dbname = "DataBase name";
+            string srvname = "Server IP Address";
+            string usrname = "User";
+            string pwd = "Password";
+            string sqlcon = $"Data Source={srvname}; Initial Catalog={dbname}; User ID={usrname}; Password={pwd}; Integrated Security=False";
+            return sqlcon;
+
+        }
