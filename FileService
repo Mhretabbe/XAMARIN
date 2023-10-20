@@ -1,0 +1,37 @@
+// File Service
+
+using System.IO;
+using Android.App;
+using Android.OS;
+using WhsManagement.Droid;
+using WhsManagement.Interface;
+
+[assembly: Xamarin.Forms.Dependency(typeof(FileService))]
+namespace WhsManagement.Droid
+{
+    public class FileService : FInterface
+    {
+        public string GetRootPath()
+        {
+            return Application.Context.GetExternalFilesDir(null).ToString();
+        }
+
+        public void CreateSignture(string name)
+        {
+            var filename = name;
+            var destination = Path.Combine(GetRootPath(), filename);
+            File.Create(destination).Close();
+        }
+        public void CreateImageFile(string ImgName)
+        {
+            var filename = ImgName;
+            var destination = Path.Combine(GetRootPath(),filename);
+            File.Create(destination).Close();
+        }
+
+       
+    }
+}
+
+
+/////////
