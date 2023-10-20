@@ -1,0 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace WhsManagement.Interface
+{
+    public interface FInterface
+    {
+       void CreateImageFile(string ImgName);
+        void CreateSignture(string name);
+        string GetRootPath();
+    }
+}
