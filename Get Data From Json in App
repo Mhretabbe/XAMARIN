@@ -19,3 +19,11 @@
 
 
             MyListView.ItemsSource = myListNews;
+
+
+// the below code returns Address the default storage
+
+ public string GetRootPath()
+        {
+            return Application.Context.GetExternalFilesDir(null).ToString();
+        }
