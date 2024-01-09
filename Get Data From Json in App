@@ -1,0 +1,21 @@
+ var assemply = System.Reflection.IntrospectionExtensions.GetTypeInfo(typeof(Page1)).Assembly;
+            Stream stream = assemply.GetManifestResourceStream($"SWDC_Logs.{jsonFileName}");
+            var readall = new StreamReader(stream);
+            var allread = readall.ReadToEnd();
+
+
+            dynamic OpDin = JsonConvert.DeserializeObject(allread);
+            List<MyListNew> myListNews = new List<MyListNew>();
+            for (int i = 0; i < OpDin.Count; i++)
+            {
+                MyListNew myListNew = new MyListNew();
+                var aa = OpDin[i].Title;
+                myListNew.Title = aa;
+                myListNew.ID = i;
+                myListNew.Detail = OpDin[i].Detail;
+                myListNews.Add(myListNew);
+            }
+
+
+
+            MyListView.ItemsSource = myListNews;
