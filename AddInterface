@@ -1,0 +1,35 @@
+Interface need to be created first:
+
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+using SWDC_Logs.Droid;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+
+[assembly: Xamarin.Forms.Dependency(typeof(FileService))]
+namespace SWDC_Logs.Droid
+{
+    class FileService:Interface1
+    {
+
+        public string GetRootPath()
+        {
+            return Application.Context.GetExternalFilesDir(null).ToString();
+        }
+       
+        public string SavedFile(string bb)
+        {
+            string FileName = bb;
+            var mainPath = Path.Combine(GetRootPath(), bb);
+            File.Create(mainPath);
+            return mainPath;
+        }
+    }
+}
