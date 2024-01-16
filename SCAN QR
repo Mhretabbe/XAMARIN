@@ -1,0 +1,25 @@
+
+ var scan = new ZXingScannerPage();
+            await Navigation.PushAsync(scan);
+            scan.OnScanResult += (result) => {
+                Device.BeginInvokeOnMainThread(async () => {
+                    await Navigation.PopAsync();
+                 _simpleAudioPlayer.Play();
+                    
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        if(result.Text==dt.Rows[i][0].ToString()) // check if the SO is already there
+                        {
+                           await DisplayAlert("ERROR!", "SO is already added!", "OK");
+                            return;
+                        }
+                            
+                    }
+                   // ListSize.HeightRequest = ListSize.HeightRequest + 50;
+                    dt.Rows.Add(result.Text);// this will add all the so's that were added
+                    PopulateSOList(); // scanned barcode should be shown as list
+
+
+                });
+               
+            };
